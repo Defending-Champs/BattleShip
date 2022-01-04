@@ -6,7 +6,8 @@ void main_menu() , Play_game() , Credits() ,Rules() , Score() , easy_PvP();
 
 int main()
 {
-	cout << "\n\n\t\t\t**********WELCOME TO BATTLE SHIP**********" << endl;
+	cout << "\n\n\t\t\t**********WELCOME TO BATTLE SHIP**********" << endl<<endl<<endl;
+	cout << "        MAIN MENU" << endl << endl;
 	main_menu();
 }
 
@@ -14,7 +15,6 @@ int main()
 void main_menu() // Main menu to choose Game play, Credits, Rules or Score
 {
 	int choice;
-	cout << "        MAIN MENU" << endl << endl;
 	cout << "    Press 1 to PLAY GAME" << endl;
 	cout << "    Press 2 for CREDITS" << endl;
 	cout << "    Press 3 for RULES" << endl;
