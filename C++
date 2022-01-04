@@ -6,6 +6,7 @@ void main_menu() , Play_game() , Credits() ,Rules() , Score() , easy_PvP();
 
 int main()
 {
+	cout << "\n\n\t\t\t**********WELCOME TO BATTLE SHIP**********" << endl;
 	main_menu();
 }
 
@@ -13,7 +14,6 @@ int main()
 void main_menu() // Main menu to choose Game play, Credits, Rules or Score
 {
 	int choice;
-	cout << "\n\n\t\t\t***WELCOME TO BATTLE SHIP***" << endl;
 	cout << "        MAIN MENU" << endl << endl;
 	cout << "    Press 1 to PLAY GAME" << endl;
 	cout << "    Press 2 for CREDITS" << endl;
@@ -170,7 +170,8 @@ void Credits() // Displaying the Credits
 	cout << "\t\t\t\t\t\t\tCreated by\n";
 	cout << "\t\t\t********************************************************************************" << endl;
 	cout << "\t\t\t   Muhammad Affan Bukhari\t\t\t MUHAMMAD IBRAHEEM NOOR\n\t\t\t\t21F-9122\t\t\t\t\t21F-9068\n\t\t\t\t\t\t\tBSCS(1A)" << endl;
-	cout << "\t\t\t********************************************************************************" << endl;
+	cout << "\t\t\t********************************************************************************" << endl<<endl;
+	main_menu();
 }
 
 
@@ -179,7 +180,8 @@ void Rules() // Displaying the Rules
 	cout << "\t************ Rules ************" << endl << endl;
 	cout << "\t1. " << endl;
 	cout << "\t2. " << endl;
-	cout << "\t3. " << endl;
+	cout << "\t3. " << endl<<endl;
+	main_menu();
 }
 
 
@@ -187,5 +189,5 @@ void Score() // Displaying the Score
 {
 
 	cout << "\t\t\tFile created Successfully";
-
+	main_menu();
 }	
