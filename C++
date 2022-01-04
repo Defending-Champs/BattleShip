@@ -1,0 +1,191 @@
+#include<iostream>
+using namespace std;
+
+void main_menu() , Play_game() , Credits() ,Rules() , Score() , easy_PvP();
+
+
+int main()
+{
+	main_menu();
+}
+
+
+void main_menu() // Main menu to choose Game play, Credits, Rules or Score
+{
+	int choice;
+	cout << "\n\n\t\t\t***WELCOME TO BATTLE SHIP***" << endl;
+	cout << "        MAIN MENU" << endl << endl;
+	cout << "    Press 1 to PLAY GAME" << endl;
+	cout << "    Press 2 for CREDITS" << endl;
+	cout << "    Press 3 for RULES" << endl;
+	cout << "    Press 4 for SCORE" << endl;
+	cin >> choice;
+	cout << endl;
+	switch (choice)
+	{
+		case(1):
+		{
+			Play_game();
+			break;
+		}
+		case(2):
+		{
+			Credits();
+			break;
+		}
+		case(3):
+		{
+			Rules();
+			break;
+		}
+		case(4):
+		{
+			Score();
+			break;
+		}
+		default:
+		{
+			cout << "Invalid Input";
+			break;
+		}
+	}
+}
+
+
+void Play_game() // Menu to choose between player vs player or player vs machine
+{
+	int choice;
+	cout << "    Press 1 for PLAYER VS PLAYER" << endl;
+	cout << "    Press 2 for PLAYER VS MACHINE" << endl;
+	cin >> choice;
+	switch (choice)
+	{
+		case(1): // PvP mode selection
+		{
+			cout << "    Press 1 for EASY" << endl;
+			cout << "    Press 2 for MEDIUM" << endl;
+			cout << "    Press 3 for HARD" << endl;
+			cin >> choice;
+			switch (choice)
+			{
+				case(1):
+				{
+					easy_PvP();
+					break;
+				}
+				case(2):
+				{
+					//medium_PvP();
+					break;
+				}
+				case(3):
+				{
+					//hard_PvP();
+					break;
+				}
+				default:
+				{
+					cout << "Invalid Input";
+					break;
+				}
+			}
+			break;
+		}
+		
+		case(2): // PvM mode selection
+		{
+			cout << "    Press 1 for EASY" << endl;
+			cout << "    Press 2 for MEDIUM" << endl;
+			cout << "    Press 3 for HARD" << endl;
+			cin >> choice;
+			switch (choice)
+			{
+				case(1):
+				{
+					//easy_PvM();
+					break;
+				}
+				case(2):
+				{
+					//medium_PvM();
+					break;
+				}
+				case(3):
+				{
+					//hard_PvM();
+					break;
+				}
+				default:
+				{
+					cout << "Invalid Input";
+					break;
+				}
+			}
+		}
+		
+		default:
+		{
+			cout << "Invalid Input";
+			break;
+		}
+		
+	}
+}
+
+
+void easy_PvP()
+{
+	int x , y;
+	const int size = 8;
+	char grid_p1 [size][size];
+	
+	for ( int i=0 ; i<size ; i++) // Making a 8x8 grid
+	{
+		for ( int j=0 ; j<size; j++)
+		{
+			grid_p1[i][j]='.';
+		}
+	}
+	
+	for ( int i=0 ; i<size ; i++) // Displaying the grid for player 1
+	{
+		cout << "\t\t\t";
+		for ( int j=0 ; j<size; j++)
+		{
+			cout << grid_p1[i][j] << " ";
+		}
+		cout << endl;
+	}
+	
+	cout << "Enter the cordinates where you want to put carrier (8x1)";
+	cout << "X axis";
+	cin >> x;
+	cout << "Y axis";
+	cin >> y;
+}
+
+
+void Credits() // Displaying the Credits
+{
+	cout << "\t\t\t\t\t\t\tCreated by\n";
+	cout << "\t\t\t********************************************************************************" << endl;
+	cout << "\t\t\t   Muhammad Affan Bukhari\t\t\t MUHAMMAD IBRAHEEM NOOR\n\t\t\t\t21F-9122\t\t\t\t\t21F-9068\n\t\t\t\t\t\t\tBSCS(1A)" << endl;
+	cout << "\t\t\t********************************************************************************" << endl;
+}
+
+
+void Rules() // Displaying the Rules
+{
+	cout << "\t************ Rules ************" << endl << endl;
+	cout << "\t1. " << endl;
+	cout << "\t2. " << endl;
+	cout << "\t3. " << endl;
+}
+
+
+void Score() // Displaying the Score
+{
+
+	cout << "\t\t\tFile created Successfully";
+
+}	
