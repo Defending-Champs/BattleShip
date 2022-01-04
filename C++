@@ -121,6 +121,7 @@ void Play_game() // Menu to choose between player vs player or player vs machine
 					break;
 				}
 			}
+			break;
 		}
 		
 		default:
