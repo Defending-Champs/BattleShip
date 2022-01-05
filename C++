@@ -3,6 +3,7 @@
 using namespace std;
 
 void main_menu(), Play_game(), Credits(), Rules(), Score(), easy_PvP(), medium_PvP(), hard_PvP();
+void attack_p1(char grid_p1[][15] , int size , char grid_p2[][15] , int x , int y , char attack_ar1[][15]);
 
 int main()
 {
@@ -341,8 +342,45 @@ void easy_PvP()
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 8);
 	
-	//easy_attack();
+	
+	char attack_P1[size][size];
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			attack_P1[i][j] = '.';
+		}
+	}
+	cout << "ITS TIME TO ATTACK" << endl << "Player 1 turn" << endl << "Enter row number : ";
+	cin >> x;
+	cout << "Enter column number : ";
+	cin >> y;
+	while(x>8 || y>8)
+	{
+		cout << endl << "Input again!" << endl;
+		cout << "Enter row number : ";
+		cin >> x;
+		cout << "Enter column number : ";
+		cin >> y;
+	}
+	attack_p1(grid_p1 , 8 , grid_p2 , x-1 , y-1 , attack_P1);
+	
 }
+
+
+void attack_p1(char grid_p1[][15] , int size , char grid_p2[][15] , int x , int y , char attack_P1[][15]) // Attack of player 1 on player 2 
+{
+	if(grid_p2[x][y]=='c' || grid_p2[x][y]=='S' || grid_p2[x][y]=='B' || grid_p2[x][y]=='D' || grid_p2[x][y]=='C')
+	{
+		attack_P1[x][y]='H';
+	}
+	else
+	{
+		attack_P1[x][y]='*';
+	}
+	DisplayArray(attack_P1, 8);
+}
+
 
 
 void medium_PvP()
@@ -424,6 +462,8 @@ void medium_PvP()
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 12);
 }
+
+
 void hard_PvP()
 {
 	int count,x,y;
@@ -504,6 +544,7 @@ void hard_PvP()
 	DisplayArray(grid_p2, 15);
 }
 
+
 void Credits() // Displaying the Credits
 {
 	cout << "\t\t\t\t\t\t\tCreated by\n";
@@ -512,6 +553,7 @@ void Credits() // Displaying the Credits
 	cout << "\t\t\t********************************************************************************" << endl << endl;
 	main_menu();
 }
+
 
 void Rules() // Displaying the Rules
 {
@@ -526,6 +568,7 @@ void Rules() // Displaying the Rules
 	cout << "8. Attack miss is denoted by a '*'." << endl << endl;
 	main_menu();
 }
+
 
 void Score() // Displaying the Score
 {
