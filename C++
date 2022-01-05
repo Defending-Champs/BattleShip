@@ -50,11 +50,19 @@ void main_menu() // Main menu to choose Game play, Credits, Rules or Score
 	}
 }
 
-void DisplayArray(char arr[][15], int size)
+
+void DisplayArray(char arr[][15], int size) // Dispalying the array
 {
+	system("cls");
+	cout << "\t\t\t  "; 
+	for ( int k=0 ; k<size ; k++)
+	{
+		cout <<k+1 << " ";
+	}
+	cout << endl;
 	for (int i = 0; i < size; i++)
 	{
-		cout << "\t\t\t";
+		cout << "\t\t\t" <<i+1 << " ";
 		for (int c = 0; c < size; c++)
 		{
 			cout << arr[i][c] << " ";
@@ -63,7 +71,8 @@ void DisplayArray(char arr[][15], int size)
 	}
 }
 
-void checkcondition(char grid_p1[][15], int N, int TS, char ch, int numofships, char fill)
+
+void checkcondition(char grid_p1[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not
 {
 	int x, y;
 	int count = 1;
@@ -200,7 +209,7 @@ void easy_PvP()
 	const int size =15 ;
 	char grid_p1[size][size];
 	char grid_p2[size][size];
-	cout<<"\t\t\tPlayer 1\n\n";                                         //player 1 setting the ships
+	                     //player 1 setting the ships
 	for (int i = 0; i < 8; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 8; j++)
@@ -209,13 +218,14 @@ void easy_PvP()
 		}
 	}
 	DisplayArray(grid_p1, 8);
+	cout<<"\nPlayer 1\n\n";
 	cout << "Enter orientation : (h/v) \n";
 	cin >> ch;
 	cout << "Enter the cordinates where you want to put (8x1) carrier : \n";
 	count = 1;
 	while (count <= 2)          // For taking 2 carriers in easy mode
 	{
-		cout << "for Carrier :" << count << endl;
+		cout << "For Carrier :" << count << endl;
 		if (ch == 'h' || ch == 'H')
 		{
 			y = 0;
@@ -249,19 +259,23 @@ void easy_PvP()
 	checkcondition(grid_p1, 5, 8, ch, 2, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 8);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p1, 4, 8, ch, 2, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 8);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p1, 3, 8, ch, 2, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 8);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p1, 2, 8, ch, 2, 'D');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 8);
-	cout<<"\t\t\tPlayer 2\n\n";                                            //Player 2 setting the ships
+	
+	                     //Player 2 setting the ships
 	for (int i = 0; i < 8; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 8; j++)
@@ -270,6 +284,7 @@ void easy_PvP()
 		}
 	}
 	DisplayArray(grid_p2, 8);
+	cout<<"\nPlayer 2\n\n";
 	cout << "Enter orientation : (h/v) \n";
 	cin >> ch;
 	cout << "Enter the cordinates where you want to put (8x1) carrier : \n";
@@ -310,19 +325,25 @@ void easy_PvP()
 	checkcondition(grid_p2, 5, 8, ch, 2, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 8);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p2, 4, 8, ch, 2, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 8);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p2, 3, 8, ch, 2, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 8);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p2, 2, 8, ch, 2, 'D');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 8);
+	
+	//easy_attack();
 }
+
 
 void medium_PvP()
 {
@@ -331,7 +352,7 @@ void medium_PvP()
 	const int size =15 ;
 	char grid_p1[size][size];
 	char grid_p2[size][size];
-	cout<<"\t\t\tPlayer 1\n\n";                                         //player 1 setting the ships
+	cout<<"\t\t\tPlayer 1\n\n";                      //player 1 setting the ships
 	for (int i = 0; i < 12; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 12; j++)
@@ -346,23 +367,28 @@ void medium_PvP()
 	checkcondition(grid_p1, 8, 12, ch, 3, 'C');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 12);
+	
 	cout << "Enter the cordinates where you want to put (5x1) battleship : \n";
 	checkcondition(grid_p1, 5, 12, ch, 3, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 12);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p1, 4, 12, ch, 3, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 12);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p1, 3, 12, ch, 3, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 12);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p1, 2, 12, ch, 3, 'D');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 12);
-	cout<<"\t\t\tPlayer 2\n\n";                                            //Player 2 setting the ships
+	
+	cout<<"\t\t\tPlayer 2\n\n";                      //Player 2 setting the ships
 	for (int i = 0; i < 12; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 12; j++)
@@ -377,18 +403,22 @@ void medium_PvP()
     checkcondition(grid_p2, 8, 12, ch, 3, 'C');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 12);
+	
 	cout << "Enter the cordinates where you want to put (5x1) battleship : \n";
 	checkcondition(grid_p2, 5, 12, ch, 3, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 12);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p2, 4, 12, ch, 3, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 12);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p2, 3, 12, ch, 3, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 12);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p2, 2, 12, ch, 3, 'D');
 	cout << "The grid becomes : \n\n";
@@ -401,7 +431,7 @@ void hard_PvP()
 	const int size =15 ;
 	char grid_p1[size][size];
 	char grid_p2[size][size];
-	cout<<"\t\t\tPlayer 1\n\n";                                         //player 1 setting the ships
+	cout<<"\t\t\tPlayer 1\n\n";                      //player 1 setting the ships
 	for (int i = 0; i < 15; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 15; j++)
@@ -416,23 +446,28 @@ void hard_PvP()
 	checkcondition(grid_p1, 8, 15, ch, 4, 'C');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 15);
+	
 	cout << "Enter the cordinates where you want to put (5x1) battleship : \n";
 	checkcondition(grid_p1, 5, 15, ch, 4, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 15);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p1, 4, 15, ch, 4, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 15);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p1, 3, 15, ch, 4, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 15);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p1, 2, 15, ch, 4, 'D');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p1, 15);
-	cout<<"\t\t\tPlayer 2\n\n";                                            //Player 2 setting the ships
+	
+	cout<<"\t\t\tPlayer 2\n\n";                      //Player 2 setting the ships
 	for (int i = 0; i < 15; i++) // Making a 8x8 grid
 	{
 		for (int j = 0; j < 15; j++)
@@ -447,18 +482,22 @@ void hard_PvP()
     checkcondition(grid_p2, 8, 15, ch, 4, 'C');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 15);
+	
 	cout << "Enter the cordinates where you want to put (5x1) battleship : \n";
 	checkcondition(grid_p2, 5, 15, ch, 4, 'B');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 15);
+	
 	cout << "Enter the cordinates where you want to put (4x1) Cruiser : \n";
 	checkcondition(grid_p2, 4, 15, ch, 4, 'c');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 15);
+	
 	cout << "Enter the cordinates where you want to put (3x1) Submarine : \n";
 	checkcondition(grid_p2, 3, 15, ch, 4, 'S');
 	cout << "The grid becomes : \n\n";
 	DisplayArray(grid_p2, 15);
+	
 	cout << "Enter the cordinates where you want to put (2x1) Destroyer : \n";
 	checkcondition(grid_p2, 2, 15, ch, 4, 'D');
 	cout << "The grid becomes : \n\n";
