@@ -1,18 +1,25 @@
 #include<iostream>
 #include<iomanip>
 #include<cstdlib>
+#include<fstream>
 using namespace std;
+
+
 
 void main_menu(), Play_game(), Credits(), Rules(), Score(), easy_PvP(), medium_PvP(), hard_PvP(), easy_PvM(), medium_PvM(), hard_PvM();
 void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[][15], char attack_P2[][15]);
 void attack_PvM(int size,char grid_p[][15], char grid_m[][15], char attack_P[][15], char attack_M[][15]);
 int P1score=0,P2score=0,Pscore=0,Mscore=0;
+
+
 int main()
 {
 	cout << "\n\n\t\t\t\t     **********WELCOME TO BATTLE SHIP**********" << endl << endl << endl;
 	cout << "        MAIN MENU" << endl << endl;
 	main_menu();
 }
+
+
 
 bool winning_condition(int size , char grid[][15] ,char attack[][15])
 {
@@ -31,6 +38,25 @@ bool winning_condition(int size , char grid[][15] ,char attack[][15])
 	}
 	return true;
 }
+
+
+
+void Scorestore()
+{
+	fstream file;
+    file.open("Scores.txt", ios::out);
+	file>>P1score;
+    file<<endl;
+	file>>P2score;
+	file<<endl;
+	file>>Pscore;
+	file<<endl;
+	file>>Mscore;
+	file.close();
+}
+
+
+
 void main_menu() // Main menu to choose Game play, Credits, Rules or Score
 {
 	int choice;
@@ -72,6 +98,7 @@ void main_menu() // Main menu to choose Game play, Credits, Rules or Score
 }
 
 
+
 void DisplayArray(char arr[][15], int size) // Dispalying the array
 {
 	system("cls");
@@ -91,6 +118,7 @@ void DisplayArray(char arr[][15], int size) // Dispalying the array
 		cout << endl;
 	}
 }
+
 
 
 void checkcondition(char grid_P[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not for player
@@ -143,6 +171,7 @@ void checkcondition(char grid_P[][15], int N, int TS, char ch, int numofships, c
 }
 
 
+
 void checkconditionM(char grid_M[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not for machine
 {
 	int x, y;
@@ -181,6 +210,8 @@ void checkconditionM(char grid_M[][15], int N, int TS, char ch, int numofships, 
 		count++;
 	}
 }
+
+
 
 void Play_game() // Menu to choose between player vs player or player vs machine
 {
@@ -260,9 +291,11 @@ void Play_game() // Menu to choose between player vs player or player vs machine
 		cout << "Invalid Input";
 		break;
 	}
-
-	}
+    }
+    cout<<endl<<endl;
+    main_menu();
 }
+
 
 
 void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[][15], char attack_P2[][15]) // Attack of player 1 on player 2 
@@ -297,6 +330,7 @@ void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[
 		if (winning_condition(size,  grid_p2, attack_P1) == true)
 		{
 			cout<<"\t\t\tPlayer 1 wins!";
+			P1score++;
 			break;
 		}
 		
@@ -329,9 +363,12 @@ void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[
 		{
 			cout<<"\t\t\tPlayer 2 wins!";
 			break;
+			P2score++;
 		}
 	}
 }
+
+
 
 void attack_PvM(int size,char grid_P[][15], char grid_M[][15], char attack_P[][15], char attack_M[][15]) // Attack of player 1 on player 2 
 {
@@ -366,6 +403,7 @@ void attack_PvM(int size,char grid_P[][15], char grid_M[][15], char attack_P[][1
 		{
 			cout<<"\t\t\tPlayer  wins!";
 			break;
+			Pscore++;
 		}
 		
 		cout << "Machine turn\n";
@@ -387,9 +425,11 @@ void attack_PvM(int size,char grid_P[][15], char grid_M[][15], char attack_P[][1
 		{
 			cout<<"\t\t\tMachine  wins!";
 			break;
+			Mscore++;
 		}
 	}
 }
+
 
 
 void easy_PvP()
@@ -557,6 +597,8 @@ void easy_PvP()
 	attack_PvP(8, grid_p1, grid_p2, attack_P1, attack_P2);
 }
 
+
+
 void medium_PvP()
 {
 	char ch;
@@ -660,6 +702,8 @@ void medium_PvP()
 	attack_PvP(12, grid_p1, grid_p2, attack_P1, attack_P2);
 }
 
+
+
 void hard_PvP()
 {
 	char ch;
@@ -761,6 +805,8 @@ void hard_PvP()
 	cout << "ITS TIME TO ATTACK" << endl;
 	attack_PvP(15, grid_p1, grid_p2, attack_P1, attack_P2);
 }
+
+
 
 void easy_PvM()
 {
@@ -928,6 +974,8 @@ void easy_PvM()
 	attack_PvM(8, grid_P, grid_M, attack_P, attack_M);
 }
 
+
+
 void medium_PvM()
 {
 	int count, x, y;
@@ -1032,6 +1080,7 @@ void medium_PvM()
 }
 
 
+
 void hard_PvM()
 {
 	int count, x, y;
@@ -1134,6 +1183,9 @@ void hard_PvM()
 	cout << "ITS TIME TO ATTACK" << endl;
 	attack_PvM(15, grid_P, grid_M, attack_P, attack_M);
 }
+
+
+
 void Credits() // Displaying the Credits
 {
 	cout << "\t\t\t\t\t\t\tCreated by\n";
@@ -1142,6 +1194,7 @@ void Credits() // Displaying the Credits
 	cout << "\t\t\t********************************************************************************" << endl << endl;
 	main_menu();
 }
+
 
 
 void Rules() // Displaying the Rules
@@ -1159,6 +1212,7 @@ void Rules() // Displaying the Rules
 }
 
 
+
 void Score() // Displaying the Score
 {
 
@@ -1170,3 +1224,4 @@ void Score() // Displaying the Score
 	cout << "Machine score : "<<Mscore<<endl<<endl<<endl;
 	main_menu();
 }
+
