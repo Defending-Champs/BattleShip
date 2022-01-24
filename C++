@@ -43,7 +43,7 @@ bool winning_condition(int size, char grid[][15], char attack[][15])
 
 void Scorestore()
 {
-	fstream file;
+	ofstream file;
 	file.open("Scores.txt", ios::out);
 	file << "\t\tPlayer vs player mode\n";
 	file << "Player 1 : " << P1score << endl;
