@@ -44,7 +44,7 @@ bool winning_condition(int size , char grid[][15] ,char attack[][15])
 void Scorestore()
 {
 	fstream file;
-    file.open("Scores.txt", ios::out);
+    file.open("Scores.txt", ios::app);
 	file>>P1score;
     file<<endl;
 	file>>P2score;
@@ -121,7 +121,7 @@ void DisplayArray(char arr[][15], int size) // Dispalying the array
 
 
 
-void checkcondition(char grid_P[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not for player
+void checkcondition(char grid_P[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not (for player)
 {
 	int x, y;
 	int count = 1;
@@ -172,7 +172,7 @@ void checkcondition(char grid_P[][15], int N, int TS, char ch, int numofships, c
 
 
 
-void checkconditionM(char grid_M[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not for machine
+void checkconditionM(char grid_M[][15], int N, int TS, char ch, int numofships, char fill) // Checking if the ship can be placed there or not (for machine)
 {
 	int x, y;
 	int count = 1;
@@ -331,6 +331,7 @@ void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[
 		{
 			cout<<"\t\t\tPlayer 1 wins!";
 			P1score++;
+			Scorestore();
 			break;
 		}
 		
@@ -362,6 +363,7 @@ void attack_PvP(int size,char grid_p1[][15], char grid_p2[][15], char attack_P1[
 		if (winning_condition(size, grid_p1, attack_P2) == true)
 		{
 			cout<<"\t\t\tPlayer 2 wins!";
+			Scorestore();
 			break;
 			P2score++;
 		}
@@ -402,6 +404,7 @@ void attack_PvM(int size,char grid_P[][15], char grid_M[][15], char attack_P[][1
 		if (winning_condition(size,  grid_M, attack_P) == true)
 		{
 			cout<<"\t\t\tPlayer  wins!";
+			Scorestore();
 			break;
 			Pscore++;
 		}
@@ -424,6 +427,7 @@ void attack_PvM(int size,char grid_P[][15], char grid_M[][15], char attack_P[][1
 		if (winning_condition(size, grid_P, attack_M) == true)
 		{
 			cout<<"\t\t\tMachine  wins!";
+			Scorestore();
 			break;
 			Mscore++;
 		}
